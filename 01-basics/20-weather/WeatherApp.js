@@ -1,5 +1,4 @@
-// import { defineComponent } from 'vue/dist/vue.esm-bundler.js'
-import { defineComponent } from 'vue/dist/vue.esm-bundler.js'
+import { defineComponent } from 'vue/dist/vue'
 import { getWeatherData, WeatherConditionIcons } from './weather.service.ts'
 
 export default defineComponent({
@@ -15,9 +14,8 @@ export default defineComponent({
     const nowSunStatus = (index) => {
       if ( weatherData[index].current.dt < weatherData[index].current.sunrise
         && weatherData[index].current.dt < weatherData[index].current.sunset){
-        return "weather-card--night"
+        return true
       }
-      return null;
     }
 
     const weatherTemp = (index) => {
@@ -32,7 +30,7 @@ export default defineComponent({
       <h1 class="title">Погода в Средиземье</h1>
 
       <ul class="weather-list unstyled-list">
-        <li v-for="(weather, index) in weatherData" :key="index" class="weather-card" :class="nowSunStatus(index)">
+        <li v-for="(weather, index) in weatherData" :key="index" class="weather-card" :class="{ 'weather-card--night': nowSunStatus(index) }">
           <div v-if="weather.alert !== null" class="weather-alert">
             <span class="weather-alert__icon">⚠️</span>
             <span class="weather-alert__description">{{ weather.alert.sender_name + weather.alert.description }}</span>
