@@ -1,4 +1,4 @@
-import {createApp, defineComponent} from 'vue'
+import {createApp, defineComponent} from 'vue/dist/vue.esm-bundler.js'
 
 const App = defineComponent({
   name: 'App',

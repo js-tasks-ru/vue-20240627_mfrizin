@@ -32,7 +32,9 @@ export const emails = [
 export default defineComponent({
   name: 'MarkedEmailsApp',
 
-  setup() {},
+  setup() {
+
+  },
 
   template: `
     <div>
